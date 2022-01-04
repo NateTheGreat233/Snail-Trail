@@ -32,8 +32,11 @@ public class Player : MonoBehaviour
     {
         if ((redSnail == null || blueSnail == null || redSnail.GetAtGoal() || blueSnail.GetAtGoal()) && canSwitchSnail)
         {
-            redTurn = !redTurn;
-            canSwitchSnail = false;
+            if ((redTurn && (redSnail == null || redSnail.GetAtGoal())) || (!redTurn && (blueSnail == null || blueSnail.GetAtGoal()))) //fixes bug of pushing the other snail into the correct flag, unintentially 'locking' the snail's turn
+            {
+                redTurn = !redTurn;
+                canSwitchSnail = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canSwitchSnail)

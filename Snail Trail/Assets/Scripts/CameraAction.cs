@@ -8,13 +8,6 @@ public class CameraAction : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetRedTurn())
-        {
-            Camera.main.backgroundColor = new Color(1, 0.6f, 0.6f);
-        }
-        else
-        {
-            Camera.main.backgroundColor = new Color(0.6f, 0.6f, 1);
-        }
+        Camera.main.backgroundColor = player.GetRedTurn() ? new Color(1, 0.6f, 0.6f) : new Color(0.6f, 0.6f, 1);
     }
 }
